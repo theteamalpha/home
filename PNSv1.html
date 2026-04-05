@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrecisionNext Solutions | Life Sciences Strategy & Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --card-bg: #0e1117;
+            --pns-blue: #0070f3;
+            --pns-teal: #00dfd8;
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Particle Background Container */
+        #canvas-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; background: radial-gradient(circle at 50% 50%, #111827 0%, #05070a 100%);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.5rem 10%; display: flex; justify-content: space-between; align-items: center;
+            transition: var(--transition);
+        }
+        nav.scrolled { background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(20px); padding: 1rem 10%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; letter-spacing: -1px; text-decoration: none; color: white; }
+        .logo span { color: var(--pns-blue); font-weight: 400; }
+
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; font-weight: 600; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--pns-blue); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding: 0 10%; text-align: center; position: relative;
+        }
+        .hero-content { max-width: 1100px; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s forwards 0.5s; }
+        
+        .hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; margin-bottom: 2rem; font-weight: 800; }
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--pns-blue), var(--pns-teal));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin: 0 auto 3rem; }
+
+        .btn {
+            padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; text-decoration: none;
+            display: inline-block; transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-primary { background: var(--pns-blue); color: white; box-shadow: 0 10px 20px rgba(0, 112, 243, 0.3); }
+        .btn-primary:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 40px rgba(0, 112, 243, 0.4); }
+
+        /* --- SECTIONS --- */
+        section { padding: 150px 10%; }
+        .section-label { color: var(--pns-blue); text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; font-weight: 800; margin-bottom: 1.5rem; display: block; }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 4rem; line-height: 1.1; }
+
+        /* Card Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .card {
+            background: var(--card-bg); padding: 4rem 3rem; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05); transition: var(--transition);
+            position: relative; overflow: hidden;
+        }
+        .card:hover { 
+            transform: translateY(-15px) scale(1.02); 
+            border-color: var(--pns-blue); 
+            background: rgba(0, 112, 243, 0.03); 
+        }
+        .card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .card p { color: var(--text-dim); font-size: 1rem; }
+
+        /* --- STATS --- */
+        .stats { display: flex; justify-content: space-between; gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 80px; }
+        .stat-item h4 { font-size: 4rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+        .stat-item p { color: var(--pns-blue); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
+
+        /* --- CONTACT BOX --- */
+        .contact-section { background: var(--card-bg); border-radius: 40px; padding: 6rem; margin-top: 100px; display: flex; gap: 5rem; align-items: center; }
+        .contact-text { flex: 1; }
+        .contact-form { flex: 1.2; display: flex; flex-direction: column; gap: 1.5rem; }
+        
+        input, select, textarea {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.2rem; border-radius: 12px; color: white; font-family: inherit; font-size: 1rem;
+            transition: var(--transition);
+        }
+        input:focus, textarea:focus { outline: none; border-color: var(--pns-blue); background: rgba(255,255,255,0.08); }
+
+        /* --- FOOTER --- */
+        footer { padding: 100px 10% 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 80px; }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; display: block; color: white; text-decoration: none; }
+        .footer-col h5 { color: white; margin-bottom: 2rem; font-size: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 1rem; color: var(--text-dim); cursor: pointer; transition: 0.3s; }
+        .footer-col li:hover { color: var(--pns-blue); padding-left: 5px; }
+
+        .footer-bottom { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-dim); }
+
+        /* Reveal Animation Classes */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .contact-section { flex-direction: column; padding: 3rem; text-align: center; }
+            .stats { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <nav id="navbar">
+        <a href="#" class="logo">PNS | <span>PrecisionNext Solutions</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">Our Expertise</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#careers">Join Us</a></li>
+            <li><a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem;">Connect</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="section-label">20+ Years of Professional Excellence</span>
+            <h1>Intelligence at the <span>Precision of Next.</span></h1>
+            <p>PrecisionNext Solutions (PNS) is a specialized life sciences consulting firm bridging the gap between deep-domain human expertise and sophisticated data strategy for commercial sales and marketing.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center;">
+                <a href="#solutions" class="btn btn-primary">Explore Solutions</a>
+                <a href="#contact" class="btn" style="border: 1px solid rgba(255,255,255,0.2); color: white;">Partner with PNS</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="reveal">
+            <span class="section-label">The PNS Heritage</span>
+            <h2>Advancing Life Sciences through established industry leadership.</h2>
+            <p style="color: var(--text-dim); font-size: 1.3rem; max-width: 900px; margin-bottom: 80px;">
+                We specialize in helping biopharmaceutical organizations navigate the complexities of product launches, market access, and field force excellence. Our methodology—the PrecisionNext Solutions framework—ensures every tactical move is backed by historical insight and future-focused analytics.
+            </p>
+        </div>
+        
+        <div class="stats reveal">
+            <div class="stat-item"><h4>20+</h4><p>Years Industry Tenure</p></div>
+            <div class="stat-item"><h4>500+</h4><p>Global Brands Supported</p></div>
+            <div class="stat-item"><h4>100%</h4><p>Life Sciences Focus</p></div>
+            <div class="stat-item"><h4>Global</h4><p>Delivery Strategy</p></div>
+        </div>
+    </section>
+
+    <section id="solutions">
+        <span class="section-label">Core Capabilities</span>
+        <h2 class="reveal">PrecisionNext Solutions for<br> Commercial Success.</h2>
+        
+        <div class="grid">
+            <div class="card reveal">
+                <h3>Commercial Excellence</h3>
+                <p>Maximize ROI through precision sales force sizing, territory alignment, and incentive compensation design tailored for competitive markets.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Launch & Market Access</h3>
+                <p>Navigating the "PrecisionNext Solutions" launch framework to ensure seamless global readiness and payer-landscape navigation.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Omnichannel Strategy</h3>
+                <p>Bridging personal and digital promotion through orchestrated HCP journeys and data-driven marketing enablement.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Data Orchestration</h3>
+                <p>Architecting scalable cloud data fabrics, MDM foundations, and Customer 360 ecosystems designed for biopharma operations.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Advanced Analytics</h3>
+                <p>From Next-Best-Action modeling to patient finder algorithms, we turn complex datasets into clear commercial opportunities.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Clinical to Commercial</h3>
+                <p>Optimizing the bridge between clinical trial insights and early-stage commercial planning through RWE and real-world data.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-section reveal">
+            <div class="contact-text">
+                <span class="section-label">Inquiry</span>
+                <h2>Start a conversation with PNS.</h2>
+                <p style="color: var(--text-dim);">Discuss your commercial challenges with a PrecisionNext Solutions partner. We specialize in transforming complex data into competitive advantage.</p>
+            </div>
+            <form class="contact-form" id="pnsContact">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Professional Email" required>
+                <select id="area">
+                    <option value="Consulting">Business Consulting</option>
+                    <option value="Analytics">Commercial Analytics</option>
+                    <option value="Careers">Careers</option>
+                    <option value="Partnership">Partnerships</option>
+                </select>
+                <textarea id="message" rows="4" placeholder="How can we help you achieve precision?" required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Precision Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="footer-logo">PNS | <span>PrecisionNext Solutions</span></a>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Global headquarters for life sciences commercial excellence. Delivering strategy through precision and deep human experience.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Solutions</h5>
+                <ul>
+                    <li>Commercial Strategy</li>
+                    <li>Omnichannel Strategy</li>
+                    <li>Data Orchestration</li>
+                    <li>Market Access</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li>About PNS</li>
+                    <li>Our Heritage</li>
+                    <li>Careers</li>
+                    <li>Partnerships</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Resources</h5>
+                <ul>
+                    <li>Whitepapers</li>
+                    <li>Case Studies</li>
+                    <li style="color: var(--pns-teal);">Roadmap Q4 2026</li>
+                    <li style="color: var(--pns-teal);">Updates Coming Soon</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PrecisionNext Solutions (PNS). All rights reserved.</p>
+            <p>Advancing Sales & Marketing with Human Experience.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // --- ANIMATED BACKGROUND (Particles Mesh) ---
+        let scene, camera, renderer, particles;
+        const container = document.getElementById('canvas-container');
+
+        function initParticles() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            for (let i = 0; i < 5000; i++) {
+                vertices.push(Math.random() * 2000 - 1000, Math.random() * 2000 - 1000, Math.random() * 2000 - 1000);
+            }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            
+            const material = new THREE.PointsMaterial({ size: 2, color: 0x0070f3, transparent: true, opacity: 0.5 });
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+            camera.position.z = 500;
+        }
+
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+            particles.rotation.y += 0.001;
+            particles.rotation.x += 0.0005;
+            renderer.render(scene, camera);
+        }
+
+        // --- INTERSECTION OBSERVER (Scroll Reveals) ---
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- NAVIGATION SCROLL ---
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // --- FORM HANDLING ---
+        document.getElementById('pnsContact').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const area = document.getElementById('area').value;
+            window.location.href = `mailto:info@pns.com?subject=PrecisionNext Solutions Inquiry: ${area}&body=Inquiry from ${name}`;
+        });
+
+        initParticles();
+        animateParticles();
+        window.onresize = () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        };
+    </script>
+</body>
+</html>
