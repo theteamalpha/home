@@ -1,2 +1,2 @@
 # home
-PrecisionNext Upcoming page
+The Team Alpha 2026
