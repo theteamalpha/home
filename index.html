@@ -433,17 +433,8 @@ footer{background:var(--bg3);border-top:1px solid #DDD9CE}
 
 
 /* ── FLOATING PARTICLES ──────────────────────────────────── */
-.particle {
-  position:fixed; bottom:-40px; border-radius:50%;
-  background:radial-gradient(circle,#5B6EF5,#8F8CD8);
-  filter:blur(3px); opacity:0; pointer-events:none; z-index:0;
-  animation:particleDrift linear infinite; will-change:transform,opacity;
-}
-@keyframes particleDrift {
-  0%   { transform:translateY(0) scale(1);       opacity:0; }
-  8%   { opacity:.45; }
-  90%  { opacity:.28; }
-  100% { transform:translateY(-102vh) scale(1.3); opacity:0; }
+
+
 }
 
 /* ── GLASS CARD SHIMMER ─────────────────────────────────── */
@@ -632,18 +623,18 @@ footer .container { padding-top:60px; padding-bottom:0; }
 .nav-feat-inline {
   display: inline-flex; align-items: center; gap: 5px;
   background: transparent; color: var(--t1);
-  border: 2px solid #3B4CCA; border-radius: 9px;
+  border: 3px solid #3B4CCA; border-radius: 9px;
   padding: 5px 13px; font-size: 13px; font-weight: 600;
   cursor: pointer; opacity: 0; transform: translateY(-5px);
   animation: featIn .48s cubic-bezier(.34,1.56,.64,1) 3.7s forwards;
   white-space: nowrap; user-select: none; transition: var(--tr);
   text-decoration: none; align-self: center;
-  box-shadow: 0 0 0 2px #22C55E;
+  box-shadow: 0 0 0 2.5px #22C55E; flex-shrink: 0;
 }
 .nav-feat-inline:hover, .nav-feat-inline.active {
   color: var(--t1); background: rgba(59,76,202,.07);
-  border: 2px solid #3B4CCA;
-  box-shadow: 0 0 0 2px #22C55E, 0 4px 12px rgba(59,76,202,.18);
+  border: 3px solid #3B4CCA;
+  box-shadow: 0 0 0 2.5px #22C55E, 0 4px 12px rgba(59,76,202,.18);
 }
 .nav-feat-dot  { display: none; }
 .nav-feat-label { font-weight: 600; color: inherit; }
@@ -652,7 +643,7 @@ footer .container { padding-top:60px; padding-bottom:0; }
   opacity: 1 !important; transform: none !important; animation: none !important;
   width: 100%; justify-content: center; font-size: 14px;
   padding: 10px 14px; border-radius: 11px; margin-bottom: 4px;
-  border: 2px solid #3B4CCA; box-shadow: 0 0 0 2px #22C55E;
+  border: 3px solid #3B4CCA; box-shadow: 0 0 0 2.5px #22C55E;
 }
 .mob-menu .nav-feat-inline:hover { background: rgba(59,76,202,.07); }
 @keyframes featIn {
@@ -796,9 +787,9 @@ footer .container { padding-top:60px; padding-bottom:0; }
     <div class="logo-brand">The Team Alpha</div>
     <div class="logo-tag"><span class="tagline-typed">Providing Tomorrow’s Value, <span class="tag-today">Today!</span></span></div>
 </div>
+  <a class="nav-feat-inline" href="#askiep" onclick="document.querySelector('#askiep').scrollIntoView({behavior:'smooth'});return false;"><span class="nav-feat-label">Featured Product:</span>&nbsp;<span class="nav-feat-name">AskIEP</span></a>
 </a>
     <div class="nav-links">
-      <a class="nav-feat-inline" href="#askiep" onclick="document.querySelector('#askiep').scrollIntoView({behavior:'smooth'});return false;"><span class="nav-feat-label">Featured Product:</span>&nbsp;<span class="nav-feat-name">AskIEP</span></a>
       <a href="#hero">Home</a>
       <a href="#process">How We Work</a>
       <a href="#services">Services</a>
@@ -1169,20 +1160,6 @@ footer .container { padding-top:60px; padding-bottom:0; }
 </section>
 
 
-<div class="particle" style="left:4%;  animation-delay:0s;   animation-duration:16s; width:6px;  height:6px;"></div>
-<div class="particle" style="left:11%; animation-delay:2.2s; animation-duration:20s; width:9px;  height:9px;"></div>
-<div class="particle" style="left:19%; animation-delay:4.4s; animation-duration:13s; width:7px;  height:7px;"></div>
-<div class="particle" style="left:28%; animation-delay:1.1s; animation-duration:18s; width:5px;  height:5px;"></div>
-<div class="particle" style="left:38%; animation-delay:6.6s; animation-duration:15s; width:8px;  height:8px;"></div>
-<div class="particle" style="left:47%; animation-delay:3.3s; animation-duration:11s; width:6px;  height:6px;"></div>
-<div class="particle" style="left:57%; animation-delay:7.7s; animation-duration:22s; width:10px; height:10px;"></div>
-<div class="particle" style="left:65%; animation-delay:2.8s; animation-duration:14s; width:5px;  height:5px;"></div>
-<div class="particle" style="left:74%; animation-delay:5.5s; animation-duration:17s; width:7px;  height:7px;"></div>
-<div class="particle" style="left:82%; animation-delay:1.8s; animation-duration:19s; width:9px;  height:9px;"></div>
-<div class="particle" style="left:89%; animation-delay:8.8s; animation-duration:12s; width:6px;  height:6px;"></div>
-<div class="particle" style="left:95%; animation-delay:3.9s; animation-duration:24s; width:4px;  height:4px;"></div>
-
-
 
 <footer>
   <div class="footer-gradient-bar"></div>
@@ -1429,7 +1406,6 @@ function onScroll(){
   var cur='hero';
   sIds.forEach(function(id){var el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<120)cur=id;});
   navAs.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
-  var pill=document.querySelector('.nav-links .nav-feat-inline');if(pill){pill.classList.toggle('active',cur==='askiep');}
 }
 window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
