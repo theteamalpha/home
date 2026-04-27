@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>The Team Alpha &ndash; Providing Tomorrow&rsquo;s Value, Today</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>The Team Alpha – Providing Tomorrow’s Value, Today</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <style>
 
 :root{
@@ -419,16 +420,15 @@ footer{background:var(--bg3);border-top:1px solid #DDD9CE}
 .tagline-typed {
   display:inline-block; overflow:hidden; white-space:nowrap;
   border-right:1.8px solid var(--blue);
-  width:0; vertical-align:bottom;
-  animation: typeTag 2.6s steps(34,end) 0.9s forwards,
+  max-width:0; vertical-align:bottom;
+  animation: typeTag 2.6s steps(38,end) 0.9s forwards,
              cursorBlink 0.72s step-end 0.9s 4;
 }
 .tagline-typed.foot-tag {
   font-size:12.5px;
   animation-delay:1.6s, 1.6s;
 }
-@keyframes typeTag {
-  from { width:0;     border-right-color:var(--blue); }
+
   to   { width:222px; border-right-color:transparent; }
 }
 @keyframes cursorBlink {
@@ -437,11 +437,8 @@ footer{background:var(--bg3);border-top:1px solid #DDD9CE}
 }
 .tag-today {
   font-weight:900; font-style:italic; color:#5B6EF5;
-  will-change:text-shadow;
-  animation: todayGlow 2.4s ease-in-out infinite 3.8s;
 }
-@keyframes todayGlow {
-  0%,100% { text-shadow:0 0 6px rgba(91,110,245,.45),0 0 18px rgba(91,110,245,.20); }
+
   50%     { text-shadow:0 0 12px rgba(91,110,245,.95),0 0 32px rgba(91,110,245,.60),0 0 55px rgba(91,110,245,.30); }
 }
 
@@ -793,8 +790,7 @@ footer .container { padding-top:60px; padding-bottom:0; }
   .fb-links { flex-wrap: wrap; gap: 14px; }
   .nav-feat-inline { font-size: 9.5px; }
   .tagline-typed { max-width: 185px; }
-  @keyframes typeTag {
-    from { width: 0; border-right-color: var(--blue); }
+  
     to   { width: 185px; border-right-color: transparent; }
   }
   .ai-cta-strip { padding: 24px 18px; }
@@ -819,384 +815,798 @@ footer .container { padding-top:60px; padding-bottom:0; }
 }
 
 </style>
+<style>
+/* ── GLOBAL BASE ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video { max-width: 100%; height: auto; }
+
+/* ── HERO: sit exactly under nav ─────────────── */
+#hero {
+  padding-top: var(--nav-h, 72px);
+  min-height: 100svh;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* ── CONTAINER BASE ──────────────────────────── */
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ── LOGO tagline: prevent overflow ──────────── */
+.logo-tag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+/* ────────────────────────────────────────────── */
+/* TABLET  ≤ 1024px                               */
+/* ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .container { padding: 0 20px; }
+  .about-wrap { gap: 32px; }
+  .sol4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ────────────────────────────────────────────── */
+/* MOBILE  ≤ 768px                                */
+/* ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root { --nav-h: 60px; }
+
+  /* Nav */
+  .nav-inner {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0 16px;
+  }
+  .nav-logo { flex-shrink: 1; overflow: hidden; }
+  .logo-tag { max-width: 130px; font-size: 0.65rem; }
+  .logo-brand { font-size: 1.05rem; }
+
+  /* Featured pill wraps below tagline naturally */
+  .nav-feat-inline { font-size: 0.68rem; padding: 3px 9px; }
+
+  /* Hero */
+  #hero { padding-top: var(--nav-h, 60px); min-height: 100svh; }
+  .hero-content { padding: 24px 16px; }
+  .hero-btns {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-btns .btn, .hero-btns a { width: 100%; text-align: center; }
+
+  /* About */
+  .about-wrap {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Solutions grid → 1 col */
+  .sol4 { grid-template-columns: 1fr; }
+
+  /* AI CTA strip */
+  .ai-cta-strip { padding: 28px 20px; }
+  .ai-cta-strip .container { flex-direction: column; gap: 16px; text-align: center; }
+
+  /* CTA box */
+  .cta-box { padding: 36px 16px; }
+
+  /* Modal */
+  .modal-box { padding: 28px 16px 20px; margin: 0 12px; width: auto; }
+
+  /* Container */
+  .container { padding: 0 16px; }
+
+  /* General sections */
+  section { padding-top: 48px; padding-bottom: 48px; }
+
+  /* Tables */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* ────────────────────────────────────────────── */
+/* SMALL MOBILE  ≤ 480px                          */
+/* ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .logo-tag { max-width: 100px; font-size: 0.6rem; }
+  .logo-brand { font-size: 0.95rem; }
+  .nav-feat-inline { font-size: 0.62rem; padding: 2px 7px; }
+
+  /* Footer */
+  .foot4 { grid-template-columns: 1fr; }
+
+  /* Hero headline sizing */
+  .hero-content h1 { font-size: clamp(1.6rem, 7vw, 2.5rem); }
+  .hero-content p  { font-size: clamp(0.85rem, 3.5vw, 1rem); }
+
+  /* CTA box */
+  .cta-box { padding: 28px 12px; }
+
+  /* Modal */
+  .modal-box { padding: 20px 12px 16px; }
+
+  /* Pricing cards */
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+</style><style>
+/* ── Featured pill repositioned: now lives in .nav-links ── */
+.nav-feat-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0 !important;
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    color: #fff !important;
+    border-radius: 999px;
+    padding: 5px 13px 5px 9px;
+    font-size: 11.5px;
+    font-weight: 800;
+    cursor: pointer;
+    /* starts invisible, animates in after tagline types */
+    opacity: 0;
+    transform: translateY(-6px) scale(.88);
+    animation: featIn .5s cubic-bezier(.34,1.56,.64,1) 3.8s forwards;
+    box-shadow: 0 4px 14px rgba(255,107,53,.38);
+    white-space: nowrap;
+    user-select: none;
+    transition: box-shadow .22s ease, background .22s ease, transform .22s ease;
+    will-change: opacity, transform;
+    text-decoration: none;
+    align-self: center;
+}
+.nav-feat-inline:hover {
+    background: linear-gradient(135deg, #FF7A45, #FFA040) !important;
+    box-shadow: 0 6px 22px rgba(255,107,53,.55) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+}
+/* dot pulse inside pill */
+.nav-feat-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    flex-shrink: 0;
+    animation: dotWave 2s ease-in-out infinite 4.4s;
+}
+.nav-feat-label { opacity: .82; font-weight: 600; letter-spacing: .2px; }
+.nav-feat-name  { font-weight: 900; letter-spacing: .2px; }
+.nav-feat-arr   { font-size: 12px; transition: transform .18s ease; }
+.nav-feat-inline:hover .nav-feat-arr { transform: translateX(3px); }
+
+/* mob-menu pill: always visible, full width feel */
+.mob-menu .nav-feat-inline {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 11px;
+    margin-bottom: 4px;
+}
+</style>
+<style>
+/* ══════════════════════════════════════════════
+   FINAL OVERRIDE LAYER — Today fix + Mobile fix
+══════════════════════════════════════════════ */
+
+/* ── typeTag: max-width based (no clipping) ── */
+@keyframes typeTag {
+  from { max-width: 0; border-right-color: var(--blue); }
+  to   { max-width: 340px; border-right-color: transparent; }
+}
+
+/* ── Remove Today glow entirely ── */
+.tag-today {
+  font-weight: 900 !important;
+  font-style: italic !important;
+  color: #5B6EF5 !important;
+  animation: none !important;
+  text-shadow: none !important;
+  will-change: auto !important;
+}
+@keyframes todayGlow { from {} to {} }
+
+/* ── Featured pill: "Featured Product" sizing ── */
+.nav-feat-inline {
+  font-size: 11px !important;
+  padding: 5px 12px 5px 9px !important;
+  gap: 5px !important;
+}
+.nav-feat-label { font-size: 11px; }
+.nav-feat-name  { font-size: 11px; }
+
+/* ── tagline: prevent clipping ── */
+.tagline-typed {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1.8px solid var(--blue);
+  display: inline-block;
+  vertical-align: bottom;
+}
+.logo-tag {
+  display: block;
+  overflow: visible !important;
+  white-space: nowrap;
+  min-height: 16px;
+}
+
+/* ══ GLOBAL SCROLL FIX ══ */
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: auto;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  min-height: 100vh;
+}
+* { box-sizing: border-box; }
+img, video { max-width: 100%; height: auto; }
+
+/* All sections must be visible */
+section, footer, nav, #navbar {
+  position: relative;
+}
+
+/* Hero — only hero clips the canvas */
+#hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: var(--nav-h, 70px);
+  overflow: hidden;
+}
+#heroCanvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+.hero-content {
+  position: relative !important;
+  z-index: 2 !important;
+  padding: 20px 20px 40px;
+}
+
+/* Container base */
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* ══ TABLET ≤ 1024px ══ */
+@media (max-width: 1024px) {
+  .container { padding-left: 20px; padding-right: 20px; }
+  .srv3 { grid-template-columns: 1fr 1fr !important; }
+  .about-wrap { grid-template-columns: 1fr !important; gap: 36px; }
+  .ai-top { grid-template-columns: 1fr !important; gap: 36px; }
+  .ai-feats { grid-template-columns: repeat(2,1fr) !important; }
+  .ai-stats { grid-template-columns: repeat(2,1fr) !important; }
+  .sol4 { grid-template-columns: 1fr 1fr !important; }
+  .about-diagram { height: 240px; }
+}
+
+/* ══ MOBILE ≤ 768px ══ */
+@media (max-width: 768px) {
+  :root { --sp: 56px !important; --nav-h: 62px !important; }
+
+  /* Nav */
+  #navbar { height: var(--nav-h, 62px) !important; }
+  .nav-links { display: none !important; }
+  .hamburger { display: flex !important; }
+  .nav-inner {
+    padding: 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: var(--nav-h, 62px) !important;
+    flex-wrap: nowrap !important;
+  }
+  .nav-logo {
+    flex-shrink: 1 !important;
+    max-width: calc(100% - 52px) !important;
+    overflow: hidden !important;
+    gap: 8px !important;
+  }
+  .logo-mark-new { width: 32px !important; height: 32px !important; flex-shrink: 0 !important; }
+  .logo-brand { font-size: 13px !important; white-space: nowrap !important; }
+  .logo-tag { font-size: 9px !important; min-height: 13px !important; }
+
+  /* Hero */
+  #hero { padding-top: var(--nav-h, 62px) !important; }
+  .hero-content { padding: 20px 16px 40px !important; text-align: center !important; }
+  .hero-h1 { font-size: clamp(28px, 8vw, 46px) !important; letter-spacing: -1px !important; }
+  .hero-sub { font-size: 15px !important; max-width: 100% !important; }
+  .hero-btns {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  .hero-btns a { width: 100% !important; max-width: 300px !important; justify-content: center !important; }
+  .hero-scroll { display: none !important; }
+
+  /* Process */
+  .steps-row { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
+  .steps-connector { display: none !important; }
+  .step { padding: 0 8px !important; }
+
+  /* Services */
+  .srv3 { grid-template-columns: 1fr !important; }
+  .srv-hdr { text-align: center !important; }
+
+  /* Stats */
+  .stats4 { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+  .stat-num { font-size: 38px !important; }
+
+  /* About */
+  .about-wrap { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .about-diagram { height: 200px !important; }
+  .about-wrap > div:last-child { display: none; }
+
+  /* Solutions */
+  .sol4 { grid-template-columns: 1fr !important; }
+
+  /* AskIEP */
+  .ai-top { grid-template-columns: 1fr !important; gap: 28px !important; margin-bottom: 36px !important; }
+  .ai-feats { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .ai-stats { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .ai-cta-strip { flex-direction: column !important; padding: 24px 18px !important; text-align: center !important; }
+  .ai-btns { justify-content: center !important; flex-wrap: wrap !important; }
+
+  /* CTA */
+  .cta-box { padding: 40px 18px !important; }
+  .cta-feats { flex-direction: column !important; align-items: center !important; gap: 10px !important; }
+
+  /* Footer */
+  .foot4 { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+  .foot-btm { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+  footer .container { padding-top: 32px !important; }
+  .fb-links { flex-wrap: wrap !important; gap: 12px !important; }
+
+  /* Mob menu pill */
+  .mob-menu .nav-feat-inline {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    padding: 10px 18px !important;
+    border-radius: 11px !important;
+    margin-bottom: 4px !important;
+    display: inline-flex !important;
+  }
+
+  /* Modals */
+  .modal-box {
+    padding: 28px 18px 20px !important;
+    margin: 16px !important;
+    width: auto !important;
+    max-width: calc(100% - 32px) !important;
+    max-height: 88vh !important;
+  }
+
+  /* Container */
+  .container { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* General */
+  .sec-title { font-size: clamp(22px, 5.5vw, 36px) !important; }
+  .sec-sub { font-size: 14px !important; }
+}
+
+/* ══ SMALL MOBILE ≤ 480px ══ */
+@media (max-width: 480px) {
+  .steps-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .stats4 { grid-template-columns: 1fr 1fr !important; }
+  .ai-feats { grid-template-columns: 1fr !important; }
+  .foot4 { grid-template-columns: 1fr !important; }
+  .hero-h1 { font-size: clamp(24px, 9vw, 38px) !important; }
+  .container { padding-left: 14px !important; padding-right: 14px !important; }
+  .cta-box { padding: 30px 14px !important; }
+  .modal-box { margin: 10px !important; padding: 20px 14px 16px !important; }
+  .logo-brand { font-size: 12px !important; }
+  .logo-tag { font-size: 8.5px !important; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
 </head>
 <body>
-
 <nav id="navbar">
-  <div id="sprogress"><div class="spbar" id="spbar"></div></div>
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo" aria-label="The Team Alpha">
-  <div class="logo-mark-new"><span>t&#178;&#945;</span></div>
-  <div>
-    <div class="logo-brand">The Team Alpha</div>
-    <div class="logo-tag"><span class="tagline-typed">Providing Tomorrow’s Value, <span class="tag-today">Today</span></span></div>
-  
-        <span class="nav-feat-inline" role="button" tabindex="0" onclick="document.querySelector('#askiep').scrollIntoView({behavior:'smooth'})" onkeydown="if(event.key==='Enter'){document.querySelector('#askiep').scrollIntoView({behavior:'smooth'})}"><span class="nav-feat-dot"></span><span class="nav-feat-label">Featured:</span><span class="nav-feat-name">AskIEP</span><span class="nav-feat-arr">&#8594;</span></span>
-      </div>
+<div id="sprogress"><div class="spbar" id="spbar"></div></div>
+<div class="nav-inner">
+<a aria-label="The Team Alpha" class="nav-logo" href="#hero">
+<div class="logo-mark-new"><span>t²α</span></div>
+<div>
+<div class="logo-brand">The Team Alpha</div>
+<div class="logo-tag"><span class="tagline-typed">Providing Tomorrow’s Value, <span class="tag-today">Today</span></span></div>
+
+</div>
 </a>
-    <div class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#process">How We Work</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#cta" class="nav-cta">Contact</a>
-    </div>
-    
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<div class="nav-links">
+<a class="nav-feat-inline" onclick="document.querySelector('#askiep').scrollIntoView({behavior:'smooth'})" onkeydown="if(event.key==='Enter'){document.querySelector('#askiep').scrollIntoView({behavior:'smooth'})}" role="button" tabindex="0"><span class="nav-feat-dot"></span><span class="nav-feat-label">Featured Product:</span><span class="nav-feat-name">AskIEP</span><span class="nav-feat-arr">→</span></a><a href="#hero">Home</a>
+<a href="#process">How We Work</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#solutions">Solutions</a>
+<a class="nav-cta" href="#cta">Contact</a>
+</div>
+<button aria-label="Menu" class="hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
+</div>
 </nav>
-
-
-
 <section id="hero">
-  <!-- ANIMATED NETWORK BACKGROUND -->
-  <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas><!-- HERO CONTENT -->
-  <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span>Next-Generation AI Consulting</div>
-    <h1 class="hero-h1"><span class="grad-text">AI&#8209;Accelerated</span><br>Human Intelligence</h1>
-    <p class="hero-sub">Catalyzing breakthrough transformation across Life Sciences &amp; beyond through innovative consulting and AI product services that fundamentally redefine industry standards.</p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-prim">Explore Our Services &#8594;</a>
-      <a href="#about" class="btn-outline">Learn About Us</a>
-    </div>
-  </div>
-  <div class="hero-scroll">Scroll<div class="scroll-line"></div></div>
+<!-- ANIMATED NETWORK BACKGROUND -->
+<canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas><!-- HERO CONTENT -->
+<div class="hero-content">
+<div class="hero-badge"><span class="dot"></span>Next-Generation AI Consulting</div>
+<h1 class="hero-h1"><span class="grad-text">AI‑Accelerated</span><br/>Human Intelligence</h1>
+<p class="hero-sub">Catalyzing breakthrough transformation across Life Sciences &amp; beyond through innovative consulting and AI product services that fundamentally redefine industry standards.</p>
+<div class="hero-btns">
+<a class="btn-prim" href="#services">Explore Our Services →</a>
+<a class="btn-outline" href="#about">Learn About Us</a>
+</div>
+</div>
+<div class="hero-scroll">Scroll<div class="scroll-line"></div></div>
 </section>
 <section id="process">
-  <div class="container">
-    <div class="proc-hdr fade-in">
-      <div class="eyebrow">How We Work</div>
-      <h2 class="sec-title">Our <span class="grad-text">Proven Approach</span></h2>
-      <p class="sec-sub">We collaborate with you at every stage&#8212;from identifying challenges to delivering seamless, measurable outcomes.</p>
-    </div>
-    <div class="steps-wrap">
-      <div class="steps-connector"></div>
-      <div class="steps-row">
-        <div class="step fade-in fd1">
-          <div class="step-num">01</div>
-          <h4>Identify</h4>
-          <p>We collaborate with you to surface your most significant challenges and opportunities across the organization.</p>
-        </div>
-        <div class="step fade-in fd2">
-          <div class="step-num">02</div>
-          <h4>Gather</h4>
-          <p>Together we gather and organize all relevant data, context, and stakeholder insights efficiently and thoroughly.</p>
-        </div>
-        <div class="step fade-in fd3">
-          <div class="step-num">03</div>
-          <h4>Analyze</h4>
-          <p>We conduct deep analysis to uncover root causes and provide clear insight into the most effective AI-driven solutions.</p>
-        </div>
-        <div class="step fade-in fd4">
-          <div class="step-num">04</div>
-          <h4>Implement</h4>
-          <p>Implementation happens in carefully planned phases with rigorous testing to ensure seamless integration and optimal results.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="proc-hdr fade-in">
+<div class="eyebrow">How We Work</div>
+<h2 class="sec-title">Our <span class="grad-text">Proven Approach</span></h2>
+<p class="sec-sub">We collaborate with you at every stage—from identifying challenges to delivering seamless, measurable outcomes.</p>
+</div>
+<div class="steps-wrap">
+<div class="steps-connector"></div>
+<div class="steps-row">
+<div class="step fade-in fd1">
+<div class="step-num">01</div>
+<h4>Identify</h4>
+<p>We collaborate with you to surface your most significant challenges and opportunities across the organization.</p>
+</div>
+<div class="step fade-in fd2">
+<div class="step-num">02</div>
+<h4>Gather</h4>
+<p>Together we gather and organize all relevant data, context, and stakeholder insights efficiently and thoroughly.</p>
+</div>
+<div class="step fade-in fd3">
+<div class="step-num">03</div>
+<h4>Analyze</h4>
+<p>We conduct deep analysis to uncover root causes and provide clear insight into the most effective AI-driven solutions.</p>
+</div>
+<div class="step fade-in fd4">
+<div class="step-num">04</div>
+<h4>Implement</h4>
+<p>Implementation happens in carefully planned phases with rigorous testing to ensure seamless integration and optimal results.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="services">
-  <div class="container">
-    <div class="srv-hdr fade-in">
-      <div class="eyebrow">What We Do</div>
-      <h2 class="sec-title">Specialized <span class="grad-text">Consulting Services</span></h2>
-      <p class="sec-sub">Deep domain expertise and proven methodologies that accelerate growth, reduce risk, and drive measurable outcomes.</p>
-    </div>
-    <div class="srv3">
-      <div class="glass srv-glass fade-in fd1">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
-        <h3>Life Sciences Commercialization</h3>
-        <p>Commercial excellence, field force enablement, and omnichannel strategy for pharma and biotech&#8212;designed for real-world adoption and measurable ROI.</p>
-        <div class="srv-stat-wrap">
-          <div class="srv-stat grad-text">10+</div>
-          <div class="srv-stat-lbl">Years of Life Sciences expertise</div>
-        </div>
-        <a href="#solutions" class="srv-more">Explore Services &#8594;</a>
-      </div>
-      <div class="glass srv-glass fade-in fd2">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
-        <h3>AI Strategy &amp; Implementation</h3>
-        <p>AI adoption roadmaps, agentic AI orchestration, and enterprise data platforms&#8212;governed, auditable, and built to scale across complex organizations.</p>
-        <div class="srv-stat-wrap">
-          <div class="srv-stat grad-text">100+</div>
-          <div class="srv-stat-lbl">AI projects delivered globally</div>
-        </div>
-        <a href="#solutions" class="srv-more">Explore Services &#8594;</a>
-      </div>
-      <div class="glass srv-glass fade-in fd3">
-        <div class="srv-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3>Digital Transformation</h3>
-        <p>End-to-end digital enablement from legacy modernization to cloud-native architecture&#8212;with change management and adoption strategies built in from day one.</p>
-        <div class="srv-stat-wrap">
-          <div class="srv-stat grad-text">$130K</div>
-          <div class="srv-stat-lbl">Avg. client savings delivered</div>
-        </div>
-        <a href="#solutions" class="srv-more">Explore Services &#8594;</a>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="srv-hdr fade-in">
+<div class="eyebrow">What We Do</div>
+<h2 class="sec-title">Specialized <span class="grad-text">Consulting Services</span></h2>
+<p class="sec-sub">Deep domain expertise and proven methodologies that accelerate growth, reduce risk, and drive measurable outcomes.</p>
+</div>
+<div class="srv3">
+<div class="glass srv-glass fade-in fd1">
+<div class="srv-icon"><svg viewbox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"></path></svg></div>
+<h3>Life Sciences Commercialization</h3>
+<p>Commercial excellence, field force enablement, and omnichannel strategy for pharma and biotech—designed for real-world adoption and measurable ROI.</p>
+<div class="srv-stat-wrap">
+<div class="srv-stat grad-text">10+</div>
+<div class="srv-stat-lbl">Years of Life Sciences expertise</div>
+</div>
+<a class="srv-more" href="#solutions">Explore Services →</a>
+</div>
+<div class="glass srv-glass fade-in fd2">
+<div class="srv-icon"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"></path></svg></div>
+<h3>AI Strategy &amp; Implementation</h3>
+<p>AI adoption roadmaps, agentic AI orchestration, and enterprise data platforms—governed, auditable, and built to scale across complex organizations.</p>
+<div class="srv-stat-wrap">
+<div class="srv-stat grad-text">100+</div>
+<div class="srv-stat-lbl">AI projects delivered globally</div>
+</div>
+<a class="srv-more" href="#solutions">Explore Services →</a>
+</div>
+<div class="glass srv-glass fade-in fd3">
+<div class="srv-icon"><svg viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></div>
+<h3>Digital Transformation</h3>
+<p>End-to-end digital enablement from legacy modernization to cloud-native architecture—with change management and adoption strategies built in from day one.</p>
+<div class="srv-stat-wrap">
+<div class="srv-stat grad-text">$130K</div>
+<div class="srv-stat-lbl">Avg. client savings delivered</div>
+</div>
+<a class="srv-more" href="#solutions">Explore Services →</a>
+</div>
+</div>
+</div>
 </section>
 <section id="stats">
-  <div class="container">
-    <div class="stats4">
-      <div class="fade-in fd1" style="text-align:center">
-        <div class="stat-num" data-target="100" data-suffix="+">0</div>
-        <div class="stat-lbl">Projects Delivered Worldwide</div>
-        <div class="stat-div"></div>
-      </div>
-      <div class="fade-in fd2" style="text-align:center">
-        <div class="stat-num" data-target="10" data-suffix="+">0</div>
-        <div class="stat-lbl">Years of Domain Expertise</div>
-        <div class="stat-div"></div>
-      </div>
-      <div class="fade-in fd3" style="text-align:center">
-        <div class="stat-num" data-target="6" data-suffix=".5M+">0</div>
-        <div class="stat-lbl">Children with IEPs Impacted</div>
-        <div class="stat-div"></div>
-      </div>
-      <div class="fade-in fd4" style="text-align:center">
-        <div class="stat-num" data-target="24" data-suffix="/7">0</div>
-        <div class="stat-lbl">AI-Powered Support Available</div>
-        <div class="stat-div"></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="stats4">
+<div class="fade-in fd1" style="text-align:center">
+<div class="stat-num" data-suffix="+" data-target="100">0</div>
+<div class="stat-lbl">Projects Delivered Worldwide</div>
+<div class="stat-div"></div>
+</div>
+<div class="fade-in fd2" style="text-align:center">
+<div class="stat-num" data-suffix="+" data-target="10">0</div>
+<div class="stat-lbl">Years of Domain Expertise</div>
+<div class="stat-div"></div>
+</div>
+<div class="fade-in fd3" style="text-align:center">
+<div class="stat-num" data-suffix=".5M+" data-target="6">0</div>
+<div class="stat-lbl">Children with IEPs Impacted</div>
+<div class="stat-div"></div>
+</div>
+<div class="fade-in fd4" style="text-align:center">
+<div class="stat-num" data-suffix="/7" data-target="24">0</div>
+<div class="stat-lbl">AI-Powered Support Available</div>
+<div class="stat-div"></div>
+</div>
+</div>
+</div>
 </section>
 <section id="about">
-  <div class="container">
-    <div class="about-wrap">
-      <div>
-        <div class="eyebrow fade-in">About The Team Alpha</div>
-        <h2 class="sec-title fade-in">Visioneers of <span class="grad-text">Tomorrow</span></h2>
-        <p class="sec-sub fade-in">A collective of seasoned leaders, disruptors, and trailblazers rooted in being Value Providers&#8212;not just vendors. We empower organizations to think faster, act smarter, and deliver significant impact through scalable AI.</p>
-        <ul class="about-list">
-          <li class="fade-in fd1"><span class="ab-check">&#10003;</span>Deep Life Sciences, pharma, and biotech domain expertise across commercial, digital, and analytics functions</li>
-          <li class="fade-in fd2"><span class="ab-check">&#10003;</span>Agentic AI and next-generation automation that is governed, ethical, and built for enterprise scale</li>
-          <li class="fade-in fd3"><span class="ab-check">&#10003;</span>Outcome-led approach with clear KPI frameworks, measurable milestones, and real adoption focus</li>
-          <li class="fade-in fd4"><span class="ab-check">&#10003;</span>Cross-functional teams spanning strategy, technology, analytics, and change management</li>
-        </ul>
-        <div style="display:flex;gap:14px;margin-top:32px;flex-wrap:wrap">
-          <a href="#cta" class="btn-prim fade-in fd5">Work With Us &#8594;</a>
-          <a href="#services" class="btn-outline fade-in fd5">Our Services</a>
-        </div>
-      </div>
-      <!-- MINI NETWORK DIAGRAM -->
-      <div class="about-diagram fade-in fd2">
-        <svg viewBox="0 0 480 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="abg" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#3B4CCA" stop-opacity=".09"/>
-              <stop offset="100%" stop-color="#F4F2EC" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="abf"><feGaussianBlur stdDeviation="2"/></filter>
-          </defs>
-          <rect width="480" height="360" fill="url(#abg)" rx="12"/>
-          <!-- Lines -->
-          <g stroke="#4F8EF7" stroke-width="1" fill="none" style="animation:breathe 3.5s ease-in-out infinite">
-            <line x1="80" y1="80" x2="200" y2="140"/>
-            <line x1="200" y1="140" x2="320" y2="90"/>
-            <line x1="320" y1="90" x2="400" y2="180"/>
-            <line x1="200" y1="140" x2="240" y2="260"/>
-            <line x1="240" y1="260" x2="360" y2="300"/>
-            <line x1="360" y1="300" x2="400" y2="180"/>
-            <line x1="80" y1="80" x2="120" y2="240"/>
-            <line x1="120" y1="240" x2="240" y2="260"/>
-            <line x1="80" y1="280" x2="120" y2="240"/>
-            <line x1="320" y1="90" x2="360" y2="300"/>
-          </g>
-          <!-- Nodes float1 -->
-          <g style="animation:float1 5s ease-in-out infinite">
-            <circle cx="80" cy="80" r="7" fill="#3B4CCA" opacity=".9"/>
-            <circle cx="80" cy="80" r="18" fill="#3B4CCA" opacity=".08" filter="url(#abf)"/>
-            <circle cx="320" cy="90" r="6" fill="#5B6EF5" opacity=".85"/>
-            <circle cx="320" cy="90" r="15" fill="#5B6EF5" opacity=".08" filter="url(#abf)"/>
-            <circle cx="360" cy="300" r="6" fill="#3B4CCA" opacity=".80"/>
-            <circle cx="360" cy="300" r="15" fill="#3B4CCA" opacity=".07" filter="url(#abf)"/>
-          </g>
-          <!-- Nodes float2 -->
-          <g style="animation:float2 6s 1s ease-in-out infinite">
-            <circle cx="200" cy="140" r="9" fill="#3B4CCA" opacity=".95"/>
-            <circle cx="200" cy="140" r="22" fill="#3B4CCA" opacity=".10" filter="url(#abf)"/>
-            <circle cx="400" cy="180" r="7" fill="#5B6EF5" opacity=".88"/>
-            <circle cx="400" cy="180" r="18" fill="#5B6EF5" opacity=".09" filter="url(#abf)"/>
-            <circle cx="80" cy="280" r="5.5" fill="#8F8CD8" opacity=".75"/>
-            <circle cx="80" cy="280" r="14" fill="#8F8CD8" opacity=".08" filter="url(#abf)"/>
-          </g>
-          <!-- Nodes float3 -->
-          <g style="animation:float3 4.5s 0.5s ease-in-out infinite">
-            <circle cx="240" cy="260" r="7" fill="#5B6EF5" opacity=".90"/>
-            <circle cx="240" cy="260" r="18" fill="#5B6EF5" opacity=".09" filter="url(#abf)"/>
-            <circle cx="120" cy="240" r="6" fill="#3B4CCA" opacity=".82"/>
-            <circle cx="120" cy="240" r="15" fill="#3B4CCA" opacity=".08" filter="url(#abf)"/>
-          </g>
-          <!-- Central label -->
-          <text x="240" y="186" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="rgba(79,142,247,.65)" letter-spacing="2">CONNECTED INTELLIGENCE</text>
-        </svg>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="about-wrap">
+<div>
+<div class="eyebrow fade-in">About The Team Alpha</div>
+<h2 class="sec-title fade-in">Visioneers of <span class="grad-text">Tomorrow</span></h2>
+<p class="sec-sub fade-in">A collective of seasoned leaders, disruptors, and trailblazers rooted in being Value Providers—not just vendors. We empower organizations to think faster, act smarter, and deliver significant impact through scalable AI.</p>
+<ul class="about-list">
+<li class="fade-in fd1"><span class="ab-check">✓</span>Deep Life Sciences, pharma, and biotech domain expertise across commercial, digital, and analytics functions</li>
+<li class="fade-in fd2"><span class="ab-check">✓</span>Agentic AI and next-generation automation that is governed, ethical, and built for enterprise scale</li>
+<li class="fade-in fd3"><span class="ab-check">✓</span>Outcome-led approach with clear KPI frameworks, measurable milestones, and real adoption focus</li>
+<li class="fade-in fd4"><span class="ab-check">✓</span>Cross-functional teams spanning strategy, technology, analytics, and change management</li>
+</ul>
+<div style="display:flex;gap:14px;margin-top:32px;flex-wrap:wrap">
+<a class="btn-prim fade-in fd5" href="#cta">Work With Us →</a>
+<a class="btn-outline fade-in fd5" href="#services">Our Services</a>
+</div>
+</div>
+<!-- MINI NETWORK DIAGRAM -->
+<div class="about-diagram fade-in fd2">
+<svg height="100%" viewbox="0 0 480 360" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="abg" r="50%">
+<stop offset="0%" stop-color="#3B4CCA" stop-opacity=".09"></stop>
+<stop offset="100%" stop-color="#F4F2EC" stop-opacity="0"></stop>
+</radialgradient>
+<filter id="abf"><fegaussianblur stddeviation="2"></fegaussianblur></filter>
+</defs>
+<rect fill="url(#abg)" height="360" rx="12" width="480"></rect>
+<!-- Lines -->
+<g fill="none" stroke="#4F8EF7" stroke-width="1" style="animation:breathe 3.5s ease-in-out infinite">
+<line x1="80" x2="200" y1="80" y2="140"></line>
+<line x1="200" x2="320" y1="140" y2="90"></line>
+<line x1="320" x2="400" y1="90" y2="180"></line>
+<line x1="200" x2="240" y1="140" y2="260"></line>
+<line x1="240" x2="360" y1="260" y2="300"></line>
+<line x1="360" x2="400" y1="300" y2="180"></line>
+<line x1="80" x2="120" y1="80" y2="240"></line>
+<line x1="120" x2="240" y1="240" y2="260"></line>
+<line x1="80" x2="120" y1="280" y2="240"></line>
+<line x1="320" x2="360" y1="90" y2="300"></line>
+</g>
+<!-- Nodes float1 -->
+<g style="animation:float1 5s ease-in-out infinite">
+<circle cx="80" cy="80" fill="#3B4CCA" opacity=".9" r="7"></circle>
+<circle cx="80" cy="80" fill="#3B4CCA" filter="url(#abf)" opacity=".08" r="18"></circle>
+<circle cx="320" cy="90" fill="#5B6EF5" opacity=".85" r="6"></circle>
+<circle cx="320" cy="90" fill="#5B6EF5" filter="url(#abf)" opacity=".08" r="15"></circle>
+<circle cx="360" cy="300" fill="#3B4CCA" opacity=".80" r="6"></circle>
+<circle cx="360" cy="300" fill="#3B4CCA" filter="url(#abf)" opacity=".07" r="15"></circle>
+</g>
+<!-- Nodes float2 -->
+<g style="animation:float2 6s 1s ease-in-out infinite">
+<circle cx="200" cy="140" fill="#3B4CCA" opacity=".95" r="9"></circle>
+<circle cx="200" cy="140" fill="#3B4CCA" filter="url(#abf)" opacity=".10" r="22"></circle>
+<circle cx="400" cy="180" fill="#5B6EF5" opacity=".88" r="7"></circle>
+<circle cx="400" cy="180" fill="#5B6EF5" filter="url(#abf)" opacity=".09" r="18"></circle>
+<circle cx="80" cy="280" fill="#8F8CD8" opacity=".75" r="5.5"></circle>
+<circle cx="80" cy="280" fill="#8F8CD8" filter="url(#abf)" opacity=".08" r="14"></circle>
+</g>
+<!-- Nodes float3 -->
+<g style="animation:float3 4.5s 0.5s ease-in-out infinite">
+<circle cx="240" cy="260" fill="#5B6EF5" opacity=".90" r="7"></circle>
+<circle cx="240" cy="260" fill="#5B6EF5" filter="url(#abf)" opacity=".09" r="18"></circle>
+<circle cx="120" cy="240" fill="#3B4CCA" opacity=".82" r="6"></circle>
+<circle cx="120" cy="240" fill="#3B4CCA" filter="url(#abf)" opacity=".08" r="15"></circle>
+</g>
+<!-- Central label -->
+<text fill="rgba(79,142,247,.65)" font-family="Inter,sans-serif" font-size="11" font-weight="700" letter-spacing="2" text-anchor="middle" x="240" y="186">CONNECTED INTELLIGENCE</text>
+</svg>
+</div>
+</div>
+</div>
 </section>
 <section id="solutions">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:48px" class="fade-in">
-      <div class="eyebrow">Solutions</div>
-      <h2 class="sec-title">What We <span class="grad-text">Deliver</span></h2>
-      <p class="sec-sub" style="margin:0 auto;max-width:600px;text-align:center">We turn foresight into reality&#8212;unlocking new possibilities within your most critical business processes.</p>
-    </div>
-    <div class="sol4">
-      <div class="glass sol-card fade-in fd1">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <div><h4>Product Launches</h4><p>Strategic launch planning with segmentation, KPI frameworks, omnichannel activation, and performance governance from day one.</p></div>
-      </div>
-      <div class="glass sol-card fade-in fd2">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <div><h4>Sales Effectiveness</h4><p>Territory design, targeting, field enablement, and predictive insights to drive sustainable growth and execution excellence.</p></div>
-      </div>
-      <div class="glass sol-card fade-in fd3">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <div><h4>Brand Strategy</h4><p>Audience-driven narrative, messaging architecture, and content strategy with clear measurement foundations built in.</p></div>
-      </div>
-      <div class="glass sol-card fade-in fd4">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <div><h4>Patient Services</h4><p>Personalized engagement, adherence support, and service operations powered by trusted data, AI, and empathetic design.</p></div>
-      </div>
-      <div class="glass sol-card fade-in fd1">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div><h4>Data / AI Innovation</h4><p>Ethical AI patterns, governed data foundations, and enterprise analytics products that enable faster, smarter decisions.</p></div>
-      </div>
-      <div class="glass sol-card fade-in fd2">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div><h4>Decision Intelligence</h4><p>Multi-source data integration and predictive analytics turned into clear, actionable recommendations for leadership teams.</p></div>
-      </div>
-      <div class="glass sol-card fade-in fd3">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <div><h4>Omnichannel Insights</h4><p>360-degree omnichannel analytics dashboards delivering real-time HCP and patient engagement visibility at scale.</p></div>
-      </div>
-      <div class="glass sol-card fade-in fd4">
-        <div class="sol-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-        <div><h4>Strategic Advisory</h4><p>AI adoption strategy, operating model design, and transformation roadmaps aligned to measurable business outcomes.</p></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="fade-in" style="text-align:center;margin-bottom:48px">
+<div class="eyebrow">Solutions</div>
+<h2 class="sec-title">What We <span class="grad-text">Deliver</span></h2>
+<p class="sec-sub" style="margin:0 auto;max-width:600px;text-align:center">We turn foresight into reality—unlocking new possibilities within your most critical business processes.</p>
+</div>
+<div class="sol4">
+<div class="glass sol-card fade-in fd1">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+<div><h4>Product Launches</h4><p>Strategic launch planning with segmentation, KPI frameworks, omnichannel activation, and performance governance from day one.</p></div>
+</div>
+<div class="glass sol-card fade-in fd2">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg></div>
+<div><h4>Sales Effectiveness</h4><p>Territory design, targeting, field enablement, and predictive insights to drive sustainable growth and execution excellence.</p></div>
+</div>
+<div class="glass sol-card fade-in fd3">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
+<div><h4>Brand Strategy</h4><p>Audience-driven narrative, messaging architecture, and content strategy with clear measurement foundations built in.</p></div>
+</div>
+<div class="glass sol-card fade-in fd4">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+<div><h4>Patient Services</h4><p>Personalized engagement, adherence support, and service operations powered by trusted data, AI, and empathetic design.</p></div>
+</div>
+<div class="glass sol-card fade-in fd1">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<div><h4>Data / AI Innovation</h4><p>Ethical AI patterns, governed data foundations, and enterprise analytics products that enable faster, smarter decisions.</p></div>
+</div>
+<div class="glass sol-card fade-in fd2">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+<div><h4>Decision Intelligence</h4><p>Multi-source data integration and predictive analytics turned into clear, actionable recommendations for leadership teams.</p></div>
+</div>
+<div class="glass sol-card fade-in fd3">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></div>
+<div><h4>Omnichannel Insights</h4><p>360-degree omnichannel analytics dashboards delivering real-time HCP and patient engagement visibility at scale.</p></div>
+</div>
+<div class="glass sol-card fade-in fd4">
+<div class="sol-ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div>
+<div><h4>Strategic Advisory</h4><p>AI adoption strategy, operating model design, and transformation roadmaps aligned to measurable business outcomes.</p></div>
+</div>
+</div>
+</div>
 </section>
 <section id="askiep">
-  <div class="container">
-    <div class="ai-top">
-      <div>
-        <div class="eyebrow fade-in">Featured Product</div>
-        <h2 class="sec-title fade-in">Meet <span class="grad-text">AskIEP</span></h2>
-        <p class="sec-sub fade-in">AI-powered special education advocacy empowering parents, advocates, and educators to navigate IEP processes with confidence&#8212;anytime, anywhere, 24/7.</p>
-        <div class="ai-stats" style="margin-top:32px">
-          <div class="glass ai-stat-card fade-in fd1">
-            <div class="ai-stat-n grad-text">6.5M+</div>
-            <div class="ai-stat-l">Children with IEPs in the U.S.</div>
-          </div>
-          <div class="glass ai-stat-card fade-in fd2">
-            <div class="ai-stat-n grad-text">70%</div>
-            <div class="ai-stat-l">Parents feel unprepared</div>
-          </div>
-          <div class="glass ai-stat-card fade-in fd3">
-            <div class="ai-stat-n grad-text">50%</div>
-            <div class="ai-stat-l">IEPs benefit from review</div>
-          </div>
-          <div class="glass ai-stat-card fade-in fd4">
-            <div class="ai-stat-n grad-text">24/7</div>
-            <div class="ai-stat-l">AI support available</div>
-          </div>
-        </div>
-        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
-          <a href="https://app.askiep.com" target="_blank" rel="noopener" class="btn-prim fade-in fd5">Launch AskIEP &#8594;</a>
-          <a href="#cta" class="btn-outline fade-in fd5">Learn More</a>
-        </div>
-      </div>
-      <!-- AskIEP Feature List -->
-      <div class="fade-in fd2">
-        <div class="ai-panel">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px" class="ai-panel-hd">
-            <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="34" height="34" rx="9" fill="#0099CC"/>
-              <path d="M4 22 L8 22 L11 14 L17 27 L23 10 L26 22 L30 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-            <span class="ai-panel-hd-title" style="font-size:20px;font-weight:900;letter-spacing:-.5px">AskIEP Platform</span>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div class="ai-row"><span style="font-size:16px">&#128196;</span><div><div class="ai-row-title">IEP Analyzer</div><div style="font-size:12px;color:var(--t2)">Plain-language AI document understanding</div></div></div>
-            <div class="ai-row"><span style="font-size:16px">&#128200;</span><div><div class="ai-row-title">Goal Progress Tracking</div><div style="font-size:12px;color:var(--t2)">Visualize milestones and benchmarks</div></div></div>
-            <div class="ai-row"><span style="font-size:16px">&#9997;&#65039;</span><div><div class="ai-row-title">Advocacy Letter Writer</div><div style="font-size:12px;color:var(--t2)">Professional letters generated in seconds</div></div></div>
-            <div class="ai-row"><span style="font-size:16px">&#128737;&#65039;</span><div><div class="ai-row-title">Rights &amp; Resources</div><div style="font-size:12px;color:var(--t2)">IDEA, Section 504, and state law guidance</div></div></div>
-            <div class="ai-row"><span style="font-size:16px">&#128101;</span><div><div class="ai-row-title">Expert Consultation</div><div style="font-size:12px;color:var(--t2)">One-on-one sessions with IEP specialists</div></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ASKIEP FEATURES GRID -->
-    <div class="ai-feats">
-      <div class="glass ai-feat fade-in fd1">
-        <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <h4>IEP Analyzer</h4>
-        <p>Upload and analyze IEPs with AI. Get plain-language explanations of every goal and accommodation.</p>
-      </div>
-      <div class="glass ai-feat fade-in fd2">
-        <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h4>Progress Tracking</h4>
-        <p>Monitor goals over time, set milestones, and stay on top of every educational benchmark.</p>
-      </div>
-      <div class="glass ai-feat fade-in fd3">
-        <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <h4>Letter Writer</h4>
-        <p>Generate professional advocacy letters to schools and districts in seconds, effortlessly.</p>
-      </div>
-      <div class="glass ai-feat fade-in fd4">
-        <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>Advocacy Lab</h4>
-        <p>AI-powered coaching for IEP meetings&#8212;understand your rights, prepare effectively.</p>
-      </div>
-      <div class="glass ai-feat fade-in fd1">
-        <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <h4>Service Tracker</h4>
-        <p>Monitor timelines and confirm agreed-upon services are delivered on schedule.</p>
-      </div>
-      <div class="glass ai-feat fade-in fd2">
-        <div class="ai-feat-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h4>AI Insights</h4>
-        <p>Continuous AI analysis surfaces patterns, flags concerns, and recommends proactive next steps.</p>
-      </div>
-    </div>
-    <!-- AskIEP CTA strip -->
-    <div class="ai-cta-strip fade-in" style="margin-top:36px">
-      <div>
-        <h3>Ready to Advocate for Your Child?</h3>
-        <p>Join thousands of parents navigating special education with confidence. Free to get started.</p>
-      </div>
-      <div class="ai-btns">
-        <a href="https://app.askiep.com" target="_blank" rel="noopener" class="btn-prim">Start Free &#8594;</a>
-        <a href="#cta" class="btn-outline">Talk to Us</a>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="ai-top">
+<div>
+<div class="eyebrow fade-in">Featured Product</div>
+<h2 class="sec-title fade-in">Meet <span class="grad-text">AskIEP</span></h2>
+<p class="sec-sub fade-in">AI-powered special education advocacy empowering parents, advocates, and educators to navigate IEP processes with confidence—anytime, anywhere, 24/7.</p>
+<div class="ai-stats" style="margin-top:32px">
+<div class="glass ai-stat-card fade-in fd1">
+<div class="ai-stat-n grad-text">6.5M+</div>
+<div class="ai-stat-l">Children with IEPs in the U.S.</div>
+</div>
+<div class="glass ai-stat-card fade-in fd2">
+<div class="ai-stat-n grad-text">70%</div>
+<div class="ai-stat-l">Parents feel unprepared</div>
+</div>
+<div class="glass ai-stat-card fade-in fd3">
+<div class="ai-stat-n grad-text">50%</div>
+<div class="ai-stat-l">IEPs benefit from review</div>
+</div>
+<div class="glass ai-stat-card fade-in fd4">
+<div class="ai-stat-n grad-text">24/7</div>
+<div class="ai-stat-l">AI support available</div>
+</div>
+</div>
+<div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+<a class="btn-prim fade-in fd5" href="https://app.askiep.com" rel="noopener" target="_blank">Launch AskIEP →</a>
+<a class="btn-outline fade-in fd5" href="#cta">Learn More</a>
+</div>
+</div>
+<!-- AskIEP Feature List -->
+<div class="fade-in fd2">
+<div class="ai-panel">
+<div class="ai-panel-hd" style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+<svg fill="none" height="32" viewbox="0 0 34 34" width="32" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#0099CC" height="34" rx="9" width="34"></rect>
+<path d="M4 22 L8 22 L11 14 L17 27 L23 10 L26 22 L30 22" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+<span class="ai-panel-hd-title" style="font-size:20px;font-weight:900;letter-spacing:-.5px">AskIEP Platform</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div class="ai-row"><span style="font-size:16px">📄</span><div><div class="ai-row-title">IEP Analyzer</div><div style="font-size:12px;color:var(--t2)">Plain-language AI document understanding</div></div></div>
+<div class="ai-row"><span style="font-size:16px">📈</span><div><div class="ai-row-title">Goal Progress Tracking</div><div style="font-size:12px;color:var(--t2)">Visualize milestones and benchmarks</div></div></div>
+<div class="ai-row"><span style="font-size:16px">✍️</span><div><div class="ai-row-title">Advocacy Letter Writer</div><div style="font-size:12px;color:var(--t2)">Professional letters generated in seconds</div></div></div>
+<div class="ai-row"><span style="font-size:16px">🛡️</span><div><div class="ai-row-title">Rights &amp; Resources</div><div style="font-size:12px;color:var(--t2)">IDEA, Section 504, and state law guidance</div></div></div>
+<div class="ai-row"><span style="font-size:16px">👥</span><div><div class="ai-row-title">Expert Consultation</div><div style="font-size:12px;color:var(--t2)">One-on-one sessions with IEP specialists</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ASKIEP FEATURES GRID -->
+<div class="ai-feats">
+<div class="glass ai-feat fade-in fd1">
+<div class="ai-feat-ico"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+<h4>IEP Analyzer</h4>
+<p>Upload and analyze IEPs with AI. Get plain-language explanations of every goal and accommodation.</p>
+</div>
+<div class="glass ai-feat fade-in fd2">
+<div class="ai-feat-ico"><svg viewbox="0 0 24 24"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg></div>
+<h4>Progress Tracking</h4>
+<p>Monitor goals over time, set milestones, and stay on top of every educational benchmark.</p>
+</div>
+<div class="glass ai-feat fade-in fd3">
+<div class="ai-feat-ico"><svg viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+<h4>Letter Writer</h4>
+<p>Generate professional advocacy letters to schools and districts in seconds, effortlessly.</p>
+</div>
+<div class="glass ai-feat fade-in fd4">
+<div class="ai-feat-ico"><svg viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<h4>Advocacy Lab</h4>
+<p>AI-powered coaching for IEP meetings—understand your rights, prepare effectively.</p>
+</div>
+<div class="glass ai-feat fade-in fd1">
+<div class="ai-feat-ico"><svg viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg></div>
+<h4>Service Tracker</h4>
+<p>Monitor timelines and confirm agreed-upon services are delivered on schedule.</p>
+</div>
+<div class="glass ai-feat fade-in fd2">
+<div class="ai-feat-ico"><svg viewbox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+<h4>AI Insights</h4>
+<p>Continuous AI analysis surfaces patterns, flags concerns, and recommends proactive next steps.</p>
+</div>
+</div>
+<!-- AskIEP CTA strip -->
+<div class="ai-cta-strip fade-in" style="margin-top:36px">
+<div>
+<h3>Ready to Advocate for Your Child?</h3>
+<p>Join thousands of parents navigating special education with confidence. Free to get started.</p>
+</div>
+<div class="ai-btns">
+<a class="btn-prim" href="https://app.askiep.com" rel="noopener" target="_blank">Start Free →</a>
+<a class="btn-outline" href="#cta">Talk to Us</a>
+</div>
+</div>
+</div>
 </section>
 <section id="cta">
-  <div class="container">
-    <div class="cta-box">
-      <div class="eyebrow" style="justify-content:center">Get Started</div>
-      <h2 class="sec-title">Ready to <span class="grad-text">Transform</span> Your Organization?</h2>
-      <p>Picture our expertise applied directly to your unique challenges. A personalized consultation is where real breakthroughs begin.</p>
-      <div class="cta-feats">
-        <div class="cta-f">Free 30-minute discovery call</div>
-        <div class="cta-f">No commitment required</div>
-        <div class="cta-f">Domain expert matched to your industry</div>
-        <div class="cta-f">Actionable next steps guaranteed</div>
-      </div>
-      <a href="mailto:info@theteamalpha.net" class="btn-prim" style="position:relative;z-index:1">Book a Consultation &#8594;</a>
-    </div>
-  </div>
+<div class="container">
+<div class="cta-box">
+<div class="eyebrow" style="justify-content:center">Get Started</div>
+<h2 class="sec-title">Ready to <span class="grad-text">Transform</span> Your Organization?</h2>
+<p>Picture our expertise applied directly to your unique challenges. A personalized consultation is where real breakthroughs begin.</p>
+<div class="cta-feats">
+<div class="cta-f">Free 30-minute discovery call</div>
+<div class="cta-f">No commitment required</div>
+<div class="cta-f">Domain expert matched to your industry</div>
+<div class="cta-f">Actionable next steps guaranteed</div>
+</div>
+<a class="btn-prim" href="mailto:info@theteamalpha.net" style="position:relative;z-index:1">Book a Consultation →</a>
+</div>
+</div>
 </section>
-
-
 <div class="particle" style="left:4%;  animation-delay:0s;   animation-duration:16s; width:6px;  height:6px;"></div>
 <div class="particle" style="left:11%; animation-delay:2.2s; animation-duration:20s; width:9px;  height:9px;"></div>
 <div class="particle" style="left:19%; animation-delay:4.4s; animation-duration:13s; width:7px;  height:7px;"></div>
@@ -1209,229 +1619,198 @@ footer .container { padding-top:60px; padding-bottom:0; }
 <div class="particle" style="left:82%; animation-delay:1.8s; animation-duration:19s; width:9px;  height:9px;"></div>
 <div class="particle" style="left:89%; animation-delay:8.8s; animation-duration:12s; width:6px;  height:6px;"></div>
 <div class="particle" style="left:95%; animation-delay:3.9s; animation-duration:24s; width:4px;  height:4px;"></div>
-
-
-
 <footer>
-  <div class="footer-gradient-bar"></div>
-  <div class="container">
-    <div class="foot4">
-      <div class="foot-brand">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-          <div class="logo-mark-new"><span>t&sup2;&alpha;</span></div>
-          <div>
-            <div style="font-size:15px;font-weight:800;color:var(--t1)">The Team Alpha</div>
-            <div class="logo-tag" style="margin-top:3px">
-              <span class="tagline-typed foot-tag">Providing Tomorrow&#8217;s Value,&#160;<span class="tag-today">Today</span></span>
-            </div>
-          </div>
-        </div>
-        <p>Catalyzing breakthrough transformation across Life Sciences &amp; beyond through AI-accelerated human intelligence and innovative consulting services.</p>
-        <div class="soc-row" style="margin-top:20px">
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="soc" title="LinkedIn">in</a>
-          <a href="https://twitter.com"  target="_blank" rel="noopener" class="soc" title="X">&#120143;</a>
-          <a href="https://youtube.com"  target="_blank" rel="noopener" class="soc" title="YouTube">&#9654;</a>
-          <a href="mailto:info@theteamalpha.net" class="soc" title="Email">&#9993;</a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#cta">Careers</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h4>Products</h4>
-        <ul>
-          <li><a href="#askiep">AskIEP Platform</a></li>
-          <li><a href="https://app.askiep.com" target="_blank" rel="noopener">AskIEP App</a></li>
-          <li><a href="#solutions">AI Solutions</a></li>
-          <li><a href="#solutions">Analytics</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="mailto:info@theteamalpha.net">info@theteamalpha.net</a></li>
-          <li><a href="#cta">Contact Us</a></li>
-          <li><a href="#cta">Book a Call</a></li>
-          <li><a href="#cta">Partnership</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-btm">
-      <p>&copy; 2026 The Team Alpha. All rights reserved.</p>
-      <div class="fb-links">
-        <a href="javascript:void(0)" onclick="openModal('modal-privacy')">Privacy Policy</a>
-        <a href="javascript:void(0)" onclick="openModal('modal-terms')">Terms of Use</a>
-        <a href="javascript:void(0)" onclick="openModal('modal-sitemap')">Sitemap</a>
-      </div>
-    </div>
-  </div>
+<div class="footer-gradient-bar"></div>
+<div class="container">
+<div class="foot4">
+<div class="foot-brand">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+<div class="logo-mark-new"><span>t²α</span></div>
+<div>
+<div style="font-size:15px;font-weight:800;color:var(--t1)">The Team Alpha</div>
+<div class="logo-tag" style="margin-top:3px">
+<span class="tagline-typed foot-tag">Providing Tomorrow’s Value, <span class="tag-today">Today</span></span>
+</div>
+</div>
+</div>
+<p>Catalyzing breakthrough transformation across Life Sciences &amp; beyond through AI-accelerated human intelligence and innovative consulting services.</p>
+<div class="soc-row" style="margin-top:20px">
+<a class="soc" href="https://linkedin.com" rel="noopener" target="_blank" title="LinkedIn">in</a>
+<a class="soc" href="https://twitter.com" rel="noopener" target="_blank" title="X">𝕏</a>
+<a class="soc" href="https://youtube.com" rel="noopener" target="_blank" title="YouTube">▶</a>
+<a class="soc" href="mailto:info@theteamalpha.net" title="Email">✉</a>
+</div>
+</div>
+<div class="foot-col">
+<h4>Company</h4>
+<ul>
+<li><a href="#about">About Us</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#solutions">Solutions</a></li>
+<li><a href="#cta">Careers</a></li>
+</ul>
+</div>
+<div class="foot-col">
+<h4>Products</h4>
+<ul>
+<li><a href="#askiep">AskIEP Platform</a></li>
+<li><a href="https://app.askiep.com" rel="noopener" target="_blank">AskIEP App</a></li>
+<li><a href="#solutions">AI Solutions</a></li>
+<li><a href="#solutions">Analytics</a></li>
+</ul>
+</div>
+<div class="foot-col">
+<h4>Connect</h4>
+<ul>
+<li><a href="mailto:info@theteamalpha.net">info@theteamalpha.net</a></li>
+<li><a href="#cta">Contact Us</a></li>
+<li><a href="#cta">Book a Call</a></li>
+<li><a href="#cta">Partnership</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-btm">
+<p>© 2026 The Team Alpha. All rights reserved.</p>
+<div class="fb-links">
+<a href="javascript:void(0)" onclick="openModal('modal-privacy')">Privacy Policy</a>
+<a href="javascript:void(0)" onclick="openModal('modal-terms')">Terms of Use</a>
+<a href="javascript:void(0)" onclick="openModal('modal-sitemap')">Sitemap</a>
+</div>
+</div>
+</div>
 </footer>
-
-
-
 <!-- ══════════════  PRIVACY POLICY MODAL  ══════════════ -->
-<div id="modal-privacy" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pptitle">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-privacy')" aria-label="Close">×</button>
-    <h2 id="pptitle">Privacy Policy</h2>
-    <span class="modal-date">Effective Date: April 26, 2026</span>
-
-    <p>The Team Alpha (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or use our services, including the AskIEP platform.</p>
-
-    <h3>Information We Collect</h3>
-    <p>We may collect personal information you voluntarily provide, such as your name, email address, and message when you contact us. We also automatically collect certain technical data including IP address, browser type, pages visited, and time spent on site through standard web analytics tools.</p>
-
-    <h3>How We Use Your Information</h3>
-    <p>We use collected information to respond to inquiries, improve our services, send relevant communications (with your consent), and analyze site usage to enhance user experience. We do not sell your personal information to third parties.</p>
-
-    <h3>Cookies &amp; Tracking Technologies</h3>
-    <p>Our website uses cookies and similar tracking technologies to enhance functionality and analyze traffic patterns. You may disable cookies through your browser settings; however, some features of the site may not function as intended.</p>
-
-    <h3>Third-Party Services</h3>
-    <p>We may use trusted third-party providers (such as analytics platforms and email services) that process data on our behalf under strict confidentiality agreements. These providers are prohibited from using your data for their own purposes.</p>
-
-    <h3>Data Security</h3>
-    <p>We implement industry-standard security measures including encryption, access controls, and regular audits to protect your information. While we strive to protect your data, no method of transmission over the internet is 100% secure.</p>
-
-    <h3>Children&rsquo;s Privacy</h3>
-    <p>Our website is not directed to children under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected such information, please contact us immediately.</p>
-
-    <h3>Changes to This Policy</h3>
-    <p>We may update this Privacy Policy periodically. We will notify you of significant changes by posting the updated policy on this page with a revised effective date.</p>
-
-    <h3>Contact Us</h3>
-    <p>For privacy-related questions or requests, please contact us at <a href="mailto:info@theteamalpha.net" style="color:#3B4CCA;font-weight:600">info@theteamalpha.net</a>.</p>
-  </div>
+<div aria-labelledby="pptitle" aria-modal="true" class="modal-overlay" id="modal-privacy" role="dialog">
+<div class="modal-box">
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-privacy')">×</button>
+<h2 id="pptitle">Privacy Policy</h2>
+<span class="modal-date">Effective Date: April 26, 2026</span>
+<p>The Team Alpha (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or use our services, including the AskIEP platform.</p>
+<h3>Information We Collect</h3>
+<p>We may collect personal information you voluntarily provide, such as your name, email address, and message when you contact us. We also automatically collect certain technical data including IP address, browser type, pages visited, and time spent on site through standard web analytics tools.</p>
+<h3>How We Use Your Information</h3>
+<p>We use collected information to respond to inquiries, improve our services, send relevant communications (with your consent), and analyze site usage to enhance user experience. We do not sell your personal information to third parties.</p>
+<h3>Cookies &amp; Tracking Technologies</h3>
+<p>Our website uses cookies and similar tracking technologies to enhance functionality and analyze traffic patterns. You may disable cookies through your browser settings; however, some features of the site may not function as intended.</p>
+<h3>Third-Party Services</h3>
+<p>We may use trusted third-party providers (such as analytics platforms and email services) that process data on our behalf under strict confidentiality agreements. These providers are prohibited from using your data for their own purposes.</p>
+<h3>Data Security</h3>
+<p>We implement industry-standard security measures including encryption, access controls, and regular audits to protect your information. While we strive to protect your data, no method of transmission over the internet is 100% secure.</p>
+<h3>Children’s Privacy</h3>
+<p>Our website is not directed to children under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected such information, please contact us immediately.</p>
+<h3>Changes to This Policy</h3>
+<p>We may update this Privacy Policy periodically. We will notify you of significant changes by posting the updated policy on this page with a revised effective date.</p>
+<h3>Contact Us</h3>
+<p>For privacy-related questions or requests, please contact us at <a href="mailto:info@theteamalpha.net" style="color:#3B4CCA;font-weight:600">info@theteamalpha.net</a>.</p>
 </div>
-
+</div>
 <!-- ══════════════  TERMS OF USE MODAL  ══════════════ -->
-<div id="modal-terms" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tutitle">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-terms')" aria-label="Close">×</button>
-    <h2 id="tutitle">Terms of Use</h2>
-    <span class="modal-date">Effective Date: April 26, 2026</span>
-
-    <h3>Acceptance of Terms</h3>
-    <p>By accessing or using the websites, platforms, or services operated by The Team Alpha (collectively, &ldquo;Services&rdquo;), you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you may not access our Services.</p>
-
-    <h3>Use of Services</h3>
-    <p>You agree to use our Services only for lawful purposes and in a manner consistent with all applicable federal, state, and local laws. You must not misuse our Services by introducing malicious code, attempting unauthorized access, or engaging in any activity that disrupts or damages our infrastructure.</p>
-
-    <h3>Intellectual Property</h3>
-    <p>All content on this website and our platforms — including text, graphics, logos, icons, images, and software — is the exclusive property of The Team Alpha or its licensors and is protected by applicable intellectual property laws. Unauthorized reproduction, distribution, or modification is strictly prohibited without prior written consent.</p>
-
-    <h3>Disclaimer of Warranties</h3>
-    <p>Our Services are provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis without warranties of any kind, either express or implied. We do not warrant that the Services will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
-
-    <h3>Limitation of Liability</h3>
-    <p>To the fullest extent permitted by law, The Team Alpha shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use our Services, even if we have been advised of the possibility of such damages.</p>
-
-    <h3>Third-Party Links</h3>
-    <p>Our Services may contain links to third-party websites. These links are provided for your convenience only. We have no control over the content of those sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.</p>
-
-    <h3>Governing Law</h3>
-    <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions. Any disputes shall be resolved exclusively in the state or federal courts located in California.</p>
-
-    <h3>Contact</h3>
-    <p>Questions regarding these Terms may be directed to <a href="mailto:info@theteamalpha.net" style="color:#3B4CCA;font-weight:600">info@theteamalpha.net</a>.</p>
-  </div>
+<div aria-labelledby="tutitle" aria-modal="true" class="modal-overlay" id="modal-terms" role="dialog">
+<div class="modal-box">
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-terms')">×</button>
+<h2 id="tutitle">Terms of Use</h2>
+<span class="modal-date">Effective Date: April 26, 2026</span>
+<h3>Acceptance of Terms</h3>
+<p>By accessing or using the websites, platforms, or services operated by The Team Alpha (collectively, “Services”), you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you may not access our Services.</p>
+<h3>Use of Services</h3>
+<p>You agree to use our Services only for lawful purposes and in a manner consistent with all applicable federal, state, and local laws. You must not misuse our Services by introducing malicious code, attempting unauthorized access, or engaging in any activity that disrupts or damages our infrastructure.</p>
+<h3>Intellectual Property</h3>
+<p>All content on this website and our platforms — including text, graphics, logos, icons, images, and software — is the exclusive property of The Team Alpha or its licensors and is protected by applicable intellectual property laws. Unauthorized reproduction, distribution, or modification is strictly prohibited without prior written consent.</p>
+<h3>Disclaimer of Warranties</h3>
+<p>Our Services are provided on an “as is” and “as available” basis without warranties of any kind, either express or implied. We do not warrant that the Services will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+<h3>Limitation of Liability</h3>
+<p>To the fullest extent permitted by law, The Team Alpha shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use our Services, even if we have been advised of the possibility of such damages.</p>
+<h3>Third-Party Links</h3>
+<p>Our Services may contain links to third-party websites. These links are provided for your convenience only. We have no control over the content of those sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.</p>
+<h3>Governing Law</h3>
+<p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions. Any disputes shall be resolved exclusively in the state or federal courts located in California.</p>
+<h3>Contact</h3>
+<p>Questions regarding these Terms may be directed to <a href="mailto:info@theteamalpha.net" style="color:#3B4CCA;font-weight:600">info@theteamalpha.net</a>.</p>
 </div>
-
+</div>
 <!-- ══════════════  SITEMAP MODAL  ══════════════ -->
-<div id="modal-sitemap" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="smtitle">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-sitemap')" aria-label="Close">×</button>
-    <h2 id="smtitle">Sitemap</h2>
-    <span class="modal-date">The Team Alpha &mdash; Complete Site Structure</span>
-
-    <div class="sitemap-group">
-      <div class="sitemap-group-title">Main Navigation</div>
-      <ul class="sitemap-list">
-        <li><a href="#hero" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">🏠</span>
-          <span class="si-text">Home</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="#process" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">⚙️</span>
-          <span class="si-text">How We Work</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="#services" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">💼</span>
-          <span class="si-text">Services</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="#stats" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">📊</span>
-          <span class="si-text">Impact &amp; Stats</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="#about" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">👥</span>
-          <span class="si-text">About The Team Alpha</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="#solutions" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">🔬</span>
-          <span class="si-text">Solutions</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="#cta" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">📬</span>
-          <span class="si-text">Contact &amp; Book a Consultation</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-      </ul>
-    </div>
-
-    <div class="sitemap-group">
-      <div class="sitemap-group-title">Products</div>
-      <ul class="sitemap-list">
-        <li><a href="#askiep" onclick="closeModal('modal-sitemap')">
-          <span class="si-icon">📄</span>
-          <span class="si-text">AskIEP Platform</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="https://app.askiep.com" target="_blank" rel="noopener">
-          <span class="si-icon">🚀</span>
-          <span class="si-text">AskIEP App &nbsp;<small style="color:#6B7280;font-weight:400">(external)</small></span>
-          <span class="si-arrow">↗</span>
-        </a></li>
-      </ul>
-    </div>
-
-    <div class="sitemap-group">
-      <div class="sitemap-group-title">Connect</div>
-      <ul class="sitemap-list">
-        <li><a href="mailto:info@theteamalpha.net">
-          <span class="si-icon">✉️</span>
-          <span class="si-text">info@theteamalpha.net</span>
-          <span class="si-arrow">→</span>
-        </a></li>
-        <li><a href="https://linkedin.com" target="_blank" rel="noopener">
-          <span class="si-icon" style="background:rgba(0,119,181,0.10)">in</span>
-          <span class="si-text">LinkedIn</span>
-          <span class="si-arrow">↗</span>
-        </a></li>
-        <li><a href="https://youtube.com" target="_blank" rel="noopener">
-          <span class="si-icon" style="background:rgba(255,0,0,0.08)">▶</span>
-          <span class="si-text">YouTube</span>
-          <span class="si-arrow">↗</span>
-        </a></li>
-      </ul>
-    </div>
-
-  </div>
+<div aria-labelledby="smtitle" aria-modal="true" class="modal-overlay" id="modal-sitemap" role="dialog">
+<div class="modal-box">
+<button aria-label="Close" class="modal-close" onclick="closeModal('modal-sitemap')">×</button>
+<h2 id="smtitle">Sitemap</h2>
+<span class="modal-date">The Team Alpha — Complete Site Structure</span>
+<div class="sitemap-group">
+<div class="sitemap-group-title">Main Navigation</div>
+<ul class="sitemap-list">
+<li><a href="#hero" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">🏠</span>
+<span class="si-text">Home</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="#process" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">⚙️</span>
+<span class="si-text">How We Work</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="#services" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">💼</span>
+<span class="si-text">Services</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="#stats" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">📊</span>
+<span class="si-text">Impact &amp; Stats</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="#about" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">👥</span>
+<span class="si-text">About The Team Alpha</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="#solutions" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">🔬</span>
+<span class="si-text">Solutions</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="#cta" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">📬</span>
+<span class="si-text">Contact &amp; Book a Consultation</span>
+<span class="si-arrow">→</span>
+</a></li>
+</ul>
 </div>
-
-
+<div class="sitemap-group">
+<div class="sitemap-group-title">Products</div>
+<ul class="sitemap-list">
+<li><a href="#askiep" onclick="closeModal('modal-sitemap')">
+<span class="si-icon">📄</span>
+<span class="si-text">AskIEP Platform</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="https://app.askiep.com" rel="noopener" target="_blank">
+<span class="si-icon">🚀</span>
+<span class="si-text">AskIEP App  <small style="color:#6B7280;font-weight:400">(external)</small></span>
+<span class="si-arrow">↗</span>
+</a></li>
+</ul>
+</div>
+<div class="sitemap-group">
+<div class="sitemap-group-title">Connect</div>
+<ul class="sitemap-list">
+<li><a href="mailto:info@theteamalpha.net">
+<span class="si-icon">✉️</span>
+<span class="si-text">info@theteamalpha.net</span>
+<span class="si-arrow">→</span>
+</a></li>
+<li><a href="https://linkedin.com" rel="noopener" target="_blank">
+<span class="si-icon" style="background:rgba(0,119,181,0.10)">in</span>
+<span class="si-text">LinkedIn</span>
+<span class="si-arrow">↗</span>
+</a></li>
+<li><a href="https://youtube.com" rel="noopener" target="_blank">
+<span class="si-icon" style="background:rgba(255,0,0,0.08)">▶</span>
+<span class="si-text">YouTube</span>
+<span class="si-arrow">↗</span>
+</a></li>
+</ul>
+</div>
+</div>
+</div>
 <script>
 
 // Navbar
